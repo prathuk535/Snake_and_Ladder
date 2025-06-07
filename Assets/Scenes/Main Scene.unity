@@ -397,7 +397,7 @@ MonoBehaviour:
   - {fileID: 349788814}
   - {fileID: 1003185294}
   - {fileID: 598347986}
-  button: {fileID: 0}
+  button: {fileID: 8300000, guid: 12c50e3bc9f5e034bafef8b6536b84bc, type: 3}
   dice: {fileID: 8300000, guid: 1e82d2a53c980bd44a53dd6af2d40f77, type: 3}
   snake: {fileID: 8300000, guid: 574e81b5224255f4abdfbad2a0f495cc, type: 3}
   ladder: {fileID: 8300000, guid: de464c05bc7877744ba531e4b87c8bd9, type: 3}
