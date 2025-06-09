@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
@@ -41,25 +42,30 @@ public class PlayerMover : MonoBehaviour
             yield return new WaitForSeconds(0.1f); // Optional: delay between tile moves
             storePlayerIndex = currentTileIndex + 1;
         }
+        
+        if(storePlayerIndex + steps >= board.pathTiles.Count && diceRoll.currentPlayerIndex == 0)
+        {
+            StartCoroutine(CheckComputerTurn());
+        }
 
         CheckPlayerIndex();
     }
 
     void CheckPlayerIndex()
     {
-        switch(storePlayerIndex)
+        switch (storePlayerIndex)
         {
             case 4:
                 StartCoroutine(PlayerSnakeLadderLerp(56));
                 SoundController.instance.PlayLadderSound();
                 break;
 
-            case 12 :
+            case 12:
                 StartCoroutine(PlayerSnakeLadderLerp(50));
                 SoundController.instance.PlayLadderSound();
                 break;
 
-            case 14 :
+            case 14:
                 StartCoroutine(PlayerSnakeLadderLerp(55));
                 SoundController.instance.PlayLadderSound();
                 break;
@@ -114,13 +120,36 @@ public class PlayerMover : MonoBehaviour
                 SoundController.instance.PlayFinishSound();
                 break;
         }
+        //diceRoll.rollDiceButton.interactable = true;
+        //yield return new WaitForSeconds(1f);
+        StartCoroutine(CheckComputerTurn());
+    }
 
+    bool isActive = true;
+    IEnumerator CheckComputerTurn()
+    {
+        if (diceRoll.playWithComputer && diceRoll.currentPlayerIndex != 0 && isActive && storePlayerIndex != 100)
+        {
+            yield return new WaitForSeconds(0.5f);
+            diceRoll.RollDice();
+            diceRoll.rollDiceButton.interactable = false;
+        }
+        //else if (diceRoll.playWithComputer && diceRoll.currentPlayerIndex == 0 && isActive && storePlayerIndex != 100 && storePlayerIndex + MoveSteps.steps >= board.pathTiles.Count)
+        //{
+        //    yield return new WaitForSeconds(0.5f);
+        //    diceRoll.RollDice();
+        //    diceRoll.rollDiceButton.interactable = false;
+        //}
+        else
+    {
         diceRoll.rollDiceButton.interactable = true;
+    }
     }
 
     IEnumerator PlayerSnakeLadderLerp(int transformToIndex)
     {
-        currentTileIndex = transformToIndex -1;
+        isActive = false;
+        currentTileIndex = transformToIndex - 1;
         storePlayerIndex = currentTileIndex + 1;
         Vector3 nextLerpPos = board.pathTiles[currentTileIndex].position;
 
@@ -132,7 +161,8 @@ public class PlayerMover : MonoBehaviour
 
         transform.position = nextLerpPos;
         yield return new WaitForSeconds(0.1f);
-        diceRoll.rollDiceButton.interactable = true;
+        isActive = true;
+        StartCoroutine(CheckComputerTurn());
     }
 
     IEnumerator GameFinished()

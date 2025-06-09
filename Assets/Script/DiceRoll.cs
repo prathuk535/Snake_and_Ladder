@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UI;
 
-
 public class DiceRoll : MonoBehaviour
 {
+    public bool playWithComputer = false;
     public PlayerMover[] player;
     public Sprite[] diceFaces; // Assign 6 sprites in Inspector
     public float rollDuration = 1.0f; // How long the dice rolls
@@ -13,7 +13,7 @@ public class DiceRoll : MonoBehaviour
     public Button rollDiceButton;
     public AudioSource audio;
 
-    private int currentPlayerIndex = 0;
+    public int currentPlayerIndex = 0;
 
     void Start()
     {
@@ -26,6 +26,11 @@ public class DiceRoll : MonoBehaviour
         {
             player[i] = FindAnyObjectByType<PlayerMover>();
         }
+    }
+
+    public void PlayWithComputerStatus(bool isPlayingWithComputer)
+    {
+        playWithComputer = isPlayingWithComputer;
     }
 
     public void RollDice()
