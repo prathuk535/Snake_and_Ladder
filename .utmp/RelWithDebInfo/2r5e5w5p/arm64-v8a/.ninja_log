@@ -1,12 +1,23 @@
 # ninja log v5
-69	689	7711916489628680	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	c4c3d7c599c28d71
 691	848	7711916491643293	C:/Prathmesh/_Github Project/Snake_and_Ladder/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2r5e5w5p/obj/arm64-v8a/libswappywrapper.so	7e51d8b10b0283bf
+1	2249	7711916505622579	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1fbdaaa0bfdc4d97
+69	689	7711916489628680	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	c4c3d7c599c28d71
 38	1786	7711916500961380	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	c6f8f06f8b4a1d7e
 30	1795	7711916500961380	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	55bc7f18a8db33ad
-8	1810	7711916501239542	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3b6ac90d1168b987
-57	1818	7711916501310114	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3a8704729b7c8617
-14	1898	7711916502097951	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	2bd349db57e67048
 47	2059	7711916503720354	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5d61367f57b7c7f4
+8	1810	7711916501239542	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3b6ac90d1168b987
+14	1898	7711916502097951	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	2bd349db57e67048
+57	1818	7711916501310114	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3a8704729b7c8617
 22	2132	7711916504455693	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	1970f1e7048b6b5d
-1	2249	7711916505622579	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1fbdaaa0bfdc4d97
 2249	2350	7711916506720503	C:/Prathmesh/_Github Project/Snake_and_Ladder/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2r5e5w5p/obj/arm64-v8a/libgame.so	81ca095390871f8f
+90	759	7716768950717056	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	c4c3d7c599c28d71
+760	1159	7716768953801262	C:/Prathmesh/_Github Project/Snake_and_Ladder/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2r5e5w5p/obj/arm64-v8a/libswappywrapper.so	7e51d8b10b0283bf
+55	2424	7716768967482996	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	c6f8f06f8b4a1d7e
+28	2427	7716768967518977	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	55bc7f18a8db33ad
+18	2454	7716768967872129	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3b6ac90d1168b987
+47	2469	7716768968007467	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	3a8704729b7c8617
+37	2524	7716768968569489	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	2bd349db57e67048
+78	2681	7716768970167831	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	5d61367f57b7c7f4
+66	2736	7716768970700417	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	1970f1e7048b6b5d
+10	2823	7716768971499334	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1fbdaaa0bfdc4d97
+2824	2918	7716768972520389	C:/Prathmesh/_Github Project/Snake_and_Ladder/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2r5e5w5p/obj/arm64-v8a/libgame.so	81ca095390871f8f

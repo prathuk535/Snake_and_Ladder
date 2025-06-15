@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
@@ -8,9 +9,10 @@ public class PlayerMover : MonoBehaviour
     public string playerName;
     public DiceRoll diceRoll;
     public BoardGrid board;
-    public int storePlayerIndex = 1;
+    public int storePlayerIndex = 1;  //stores the board tile value of player
     public float moveSpeed = 4f;
     private int currentTileIndex = 0;
+    int diceValue;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class PlayerMover : MonoBehaviour
 
     public void MoveSteps(int steps)
     {
+        diceValue = steps;
         StartCoroutine(MoveAlongPath(steps));
     }
 
@@ -41,11 +44,6 @@ public class PlayerMover : MonoBehaviour
             steps--;
             yield return new WaitForSeconds(0.1f); // Optional: delay between tile moves
             storePlayerIndex = currentTileIndex + 1;
-        }
-        
-        if(storePlayerIndex + steps >= board.pathTiles.Count && diceRoll.currentPlayerIndex == 0)
-        {
-            StartCoroutine(CheckComputerTurn());
         }
 
         CheckPlayerIndex();
@@ -125,25 +123,27 @@ public class PlayerMover : MonoBehaviour
         StartCoroutine(CheckComputerTurn());
     }
 
-    bool isActive = true;
+    bool isActive = true;               // to wait if player is in snakeladderlerp
     IEnumerator CheckComputerTurn()
     {
-        if (diceRoll.playWithComputer && diceRoll.currentPlayerIndex != 0 && isActive && storePlayerIndex != 100)
+        //Debug.Log(diceRoll.playWithComputer + "" + diceRoll.currentPlayerIndex + "" + isActive + "" + storePlayerIndex);
+        if (diceRoll.playWithComputer && diceRoll.currentPlayerIndex != 0 && isActive && storePlayerIndex != 100)        //condition checks for 1st player and gives turn to computer if it is not 1st player
         {
+            Debug.Log("1" + playerName);
             yield return new WaitForSeconds(0.5f);
             diceRoll.RollDice();
             diceRoll.rollDiceButton.interactable = false;
         }
-        //else if (diceRoll.playWithComputer && diceRoll.currentPlayerIndex == 0 && isActive && storePlayerIndex != 100 && storePlayerIndex + MoveSteps.steps >= board.pathTiles.Count)
-        //{
-        //    yield return new WaitForSeconds(0.5f);
-        //    diceRoll.RollDice();
-        //    diceRoll.rollDiceButton.interactable = false;
-        //}
+        else if(diceRoll.currentPlayerIndex == 0 && storePlayerIndex + diceValue >= board.pathTiles.Count && playerName == "Blue")
+        {
+            yield return new WaitForSeconds(0.5f);
+            Debug.Log("2"+playerName);
+            diceRoll.RollDice();
+        }
         else
-    {
-        diceRoll.rollDiceButton.interactable = true;
-    }
+        {
+            diceRoll.rollDiceButton.interactable = true;
+        }
     }
 
     IEnumerator PlayerSnakeLadderLerp(int transformToIndex)
@@ -168,6 +168,7 @@ public class PlayerMover : MonoBehaviour
     IEnumerator GameFinished()
     {
         GameController.instance.PlayerWon(playerName);
+        StopCoroutine(CheckComputerTurn());
         for (int i = 0; i < diceRoll.player.Length; i++)
         {
             diceRoll.player[i].gameObject.SetActive(false);
@@ -175,5 +176,12 @@ public class PlayerMover : MonoBehaviour
         diceRoll.rollDiceButton.gameObject.SetActive(false);
         Debug.Log("Congratulation");
         yield return null;
+    }
+
+    [ContextMenu("Automate Testing")]
+    public void AutomateTesting()
+    {
+        transform.position = board.pathTiles[97].position;
+        currentTileIndex = 97;
     }
 }

@@ -54,7 +54,7 @@ public class DiceRoll : MonoBehaviour
         // Final result
         int finalIndex = Random.Range(0, diceFaces.Length);
         diceRenderer.sprite = diceFaces[finalIndex];
-        player[currentPlayerIndex].MoveSteps(finalIndex +1);
+        player[currentPlayerIndex].MoveSteps(finalIndex +1);            //pass the fnal int value of dice to player
         currentPlayerIndex = (currentPlayerIndex + 1) % player.Length;
     }
 }
